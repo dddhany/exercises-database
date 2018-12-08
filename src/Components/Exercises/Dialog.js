@@ -4,7 +4,7 @@ import {
   DialogTitle,
   DialogContent,
   DialogContentText,
-  Button
+  Fab
 } from '@material-ui/core'
 import { Add } from '@material-ui/icons'
 import Form from './Form'
@@ -24,9 +24,9 @@ export default class extends Component {
       { muscles, onCreate } = this.props
     return (
       <Fragment>
-        <Button variant="fab" onClick={this.handleToggle} mini>
+        <Fab onClick={this.handleToggle}>
           <Add />
-        </Button>
+        </Fab>
         <Dialog open={open} onClose={this.handleToggle}>
           <DialogTitle id="form-dialog-title">
             Create a New Exercise

@@ -10,7 +10,7 @@ import {
   IconButton
 } from '@material-ui/core'
 import { Delete, Edit } from '@material-ui/icons'
-import { Form } from './Form'
+import Form from './Form'
 
 const styles = {
   padding: 20,

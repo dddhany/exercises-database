@@ -30,6 +30,12 @@ export default withStyles(styles)(
           }
     }
 
+    componentWillReceiveProps({ exercise }) {
+      this.setState({
+        ...exercise
+      })
+    }
+
     handleChange = name => ({ target: { value } }) =>
       this.setState({
         [name]: value
