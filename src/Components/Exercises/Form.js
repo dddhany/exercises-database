@@ -43,25 +43,16 @@ export default withStyles(styles)(
 
     handleSubmit = () => {
       // TODO: validate
-      const { exercise } = this.state
-      console.log(exercise)
       this.props.onSubmit({
-        ...exercise,
-        id: exercise.title.toLocaleLowerCase().replace(/ /g, '-')
+        id: this.state.title.toLocaleLowerCase().replace(/ /g, '-'),
+        ...this.state
       })
-      this.setState({
-        open: false,
-        exercise: {
-          title: '',
-          description: '',
-          muscles: ''
-        }
-      })
+      this.setState(this.getInitState())
     }
 
     render() {
       const { title, description, muscles } = this.state,
-        { classes, muscles: categories } = this.props
+        { classes, muscles: categories, exercise } = this.props
       return (
         <form>
           <TextField
@@ -96,7 +87,7 @@ export default withStyles(styles)(
             variant="contained"
             onClick={this.handleSubmit}
           >
-            Create
+            {exercise ? 'Edit' : 'Create'}
           </Button>
         </form>
       )
