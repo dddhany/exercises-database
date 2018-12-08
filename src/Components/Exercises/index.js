@@ -5,8 +5,11 @@ import {
   Typography,
   List,
   ListItem,
-  ListItemText
+  ListItemText,
+  ListItemSecondaryAction,
+  IconButton
 } from '@material-ui/core'
+import { Delete } from '@material-ui/icons'
 
 const styles = {
   padding: 20,
@@ -24,7 +27,8 @@ export default ({
     id,
     title = 'Welcome!',
     description = 'Please select an exercise from the list on the left.'
-  }
+  },
+  onDelete
 }) => (
   <Grid container spacing={24}>
     <Grid item sm>
@@ -39,6 +43,11 @@ export default ({
                 {exercises.map(({ id, title }) => (
                   <ListItem key={id} button onClick={() => onSelect(id)}>
                     <ListItemText primary={title} />
+                    <ListItemSecondaryAction>
+                      <IconButton onClick={() => onDelete(id)}>
+                        <Delete />
+                      </IconButton>
+                    </ListItemSecondaryAction>
                   </ListItem>
                 ))}
               </List>
