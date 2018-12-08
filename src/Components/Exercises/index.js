@@ -16,31 +16,42 @@ const styles = {
   overflowY: 'auto'
 }
 
-export default ({ exercises }) => (
+export default ({
+  exercises,
+  category,
+  onSelect,
+  exercise: {
+    id,
+    title = 'Welcome!',
+    description = 'Please select an exercise from the list on the left.'
+  }
+}) => (
   <Grid container spacing={24}>
     <Grid item sm>
       <Paper style={styles}>
-        {exercises.map(([group, exercises]) => (
-          <Fragment>
-            <Typography variant="h6" style={{ textTransform: 'capitalize' }}>
-              {group}
-            </Typography>
-            <List component="ul">
-              {exercises.map(({ title }) => (
-                <ListItem button>
-                  <ListItemText primary={title} />
-                </ListItem>
-              ))}
-            </List>
-          </Fragment>
-        ))}
+        {exercises.map(([group, exercises]) =>
+          !category || category === group ? (
+            <Fragment key={group}>
+              <Typography variant="h6" style={{ textTransform: 'capitalize' }}>
+                {group}
+              </Typography>
+              <List component="ul">
+                {exercises.map(({ id, title }) => (
+                  <ListItem key={id} button onClick={() => onSelect(id)}>
+                    <ListItemText primary={title} />
+                  </ListItem>
+                ))}
+              </List>
+            </Fragment>
+          ) : null
+        )}
       </Paper>
     </Grid>
     <Grid item sm>
       <Paper style={styles}>
-        <Typography variant="h4">Welcome!</Typography>
+        <Typography variant="h4">{title}</Typography>
         <Typography variant="subtitle1" style={{ marginTop: 20 }}>
-          Please select an exercise from the list on the left.
+          {description}
         </Typography>
       </Paper>
     </Grid>
