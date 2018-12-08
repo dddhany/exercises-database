@@ -1,7 +1,7 @@
 {
   "name": "exercises-database",
   "version": "1.0.0",
-  "description": "",
+  "description": "react + material ui  based on youtube tutorial https://www.youtube.com/watch?v=xm4LX5fJKZ8",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
